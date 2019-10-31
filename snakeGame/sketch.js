@@ -1,14 +1,14 @@
 var s;
-var numFood;
-var createFood;
+var numFood = 0;
+var createFood = 15;
 var foodLocations;
+var canvasH = windowHeight;
+var canvasW = windowWidth;
 
 function setup() {
 	var canvas = createCanvas(600, 600);
 	frameRate(10);
 	s = new Snake();
-	numFood = 0;
-	createFood = 5;
 	canvas.position((windowWidth - width) / 2, (windowHeight - height) / 2);
 }
 
@@ -45,7 +45,7 @@ function randomLocations(){
 
 function generateFoods(){
 	if (numFood == 0){
-		numFood = 5;
+		numFood = createFood;
 		foodLocations = randomLocations();
 	}
 }

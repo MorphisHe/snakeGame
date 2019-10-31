@@ -35,22 +35,25 @@ function Snake(){
 
     this.death = function(){
         if (this.x >= 600 || this.y >= 600 ||
-            this.x < 0 || this.y < 0 ){
+            this.x < 0 || this.y < 0 || this.hitOwnBody()){
             this.x = 0;
             this.y = 0;
             this.xspeed = 1;
             this.yspeed = 0;
             this.snakeBody = [[this.x, this.y]];
             numFood = 0;
-            createFood = 5;
+            createFood = 15;
             foodLocations =[];
         }
     };
 
-    // this.hitOwnBody = function(){
-    //     this.snakeBody.forEach(block => {
-
-    //     })
-    // }
+    this.hitOwnBody = function(){
+        for (i = 1; i <= this.snakeBody.length-1; i++){
+            if (this.x == this.snakeBody[i][0] &&
+                this.y == this.snakeBody[i][1])
+                return true;
+        }
+        return false;
+    };
 
 }
