@@ -35,7 +35,7 @@ function Snake(){
 
     this.death = function(){
         if (this.x >= 600 || this.y >= 600 ||
-            this.x < 0 || this.y < 0){
+            this.x < 0 || this.y < 0 ){
             this.x = 0;
             this.y = 0;
             this.xspeed = 1;
@@ -46,5 +46,11 @@ function Snake(){
             foodLocations =[];
         }
     };
+
+    // this.hitOwnBody = function(){
+    //     this.snakeBody.forEach(block => {
+
+    //     })
+    // }
 
 }
