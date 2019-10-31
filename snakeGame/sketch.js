@@ -23,6 +23,10 @@ function draw() {
 	drawFoods();
 	eat();
 	hitBoom();
+	if (keyIsDown(RIGHT_ARROW) || keyIsDown(LEFT_ARROW) ||
+		keyIsDown(UP_ARROW) || keyIsDown(DOWN_ARROW))
+		frameRate(50);
+	else frameRate(10);
 }
 
 function keyPressed() {
