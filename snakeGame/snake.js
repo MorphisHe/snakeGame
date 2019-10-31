@@ -36,14 +36,7 @@ function Snake(){
     this.death = function(){
         if (this.x >= windowWidth || this.y >= windowHeight ||
             this.x < 0 || this.y < 0 || this.hitOwnBody()){
-            this.x = 0;
-            this.y = 0;
-            this.xspeed = 1;
-            this.yspeed = 0;
-            this.snakeBody = [[this.x, this.y]];
-            numFood = 0;
-            createFood = 15;
-            foodLocations =[];
+            this.resetAll();
         }
     };
 
@@ -54,6 +47,20 @@ function Snake(){
                 return true;
         }
         return false;
+    };
+
+    this.resetAll = function(){
+            this.x = 0;
+            this.y = 0;
+            this.xspeed = 1;
+            this.yspeed = 0;
+            this.snakeBody = [[this.x, this.y]];
+            numFood = 0;
+            createFood = 15;
+            foodLocations =[];
+            boomLocations = [];
+            createBoom = 10;
+            generateBooms();
     };
 
 }

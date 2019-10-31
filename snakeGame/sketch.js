@@ -1,23 +1,28 @@
 var s;
 var numFood = 0;
 var createFood = 15;
-var foodLocations;
+var foodLocations = [];
+var boomLocations = [];
+var createBoom = 10;
 
 function setup() {
 	var canvas = createCanvas(windowWidth, windowHeight);
 	frameRate(10);
 	s = new Snake();
 	canvas.position((windowWidth - width) / 2, (windowHeight - height) / 2);
+	generateBooms();
 }
 
 function draw() {
 	background("black");
+	drawBooms();
 	s.update();
 	s.show();
 	s.death();
 	generateFoods();
 	drawFoods();
 	eat();
+	hitBoom();
 }
 
 function keyPressed() {
@@ -32,9 +37,9 @@ function keyPressed() {
 	}
 }
 
-function randomLocations(){
+function randomLocations(numLocation){
 	locations = [];
-	for (i = 0; i < createFood; i++){
+	for (i = 0; i < numLocation; i++){
 		locations.push([Math.floor(Math.random() * windowWidth / s.gridSize) * s.gridSize,
 			Math.floor(Math.random() * windowHeight / s.gridSize) * s.gridSize]);
 	}
@@ -44,12 +49,11 @@ function randomLocations(){
 function generateFoods(){
 	if (numFood == 0){
 		numFood = createFood;
-		foodLocations = randomLocations();
+		foodLocations = randomLocations(createFood);
 	}
 }
 
 function drawFoods(){
-	console.log(foodLocations);
 	foodLocations.forEach(location => {
 		fill("green");
 		rect(location[0], location[1], s.gridSize, s.gridSize);
@@ -75,4 +79,25 @@ function eat(){
 		}
 	});
 }
+
+function generateBooms(){
+	boomLocations = randomLocations(createBoom);
+}
+
+function drawBooms(){
+	boomLocations.forEach(location => {
+		fill("red");
+		rect(location[0], location[1], s.gridSize, s.gridSize);
+	});
+}
+
+function hitBoom(){
+	for ( i = 0; i < boomLocations.length; i++){
+		if(boomLocations[i][0] == s.x && boomLocations[i][1] == s.y){
+			s.resetAll();
+		}
+	}
+}
+
+
 
