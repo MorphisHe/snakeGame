@@ -2,11 +2,9 @@ var s;
 var numFood = 0;
 var createFood = 15;
 var foodLocations;
-var canvasH = windowHeight;
-var canvasW = windowWidth;
 
 function setup() {
-	var canvas = createCanvas(600, 600);
+	var canvas = createCanvas(windowWidth, windowHeight);
 	frameRate(10);
 	s = new Snake();
 	canvas.position((windowWidth - width) / 2, (windowHeight - height) / 2);
@@ -37,8 +35,8 @@ function keyPressed() {
 function randomLocations(){
 	locations = [];
 	for (i = 0; i < createFood; i++){
-		locations.push([Math.floor(Math.random() * 600 / s.gridSize) * s.gridSize,
-			Math.floor(Math.random() * 600 / s.gridSize) * s.gridSize]);
+		locations.push([Math.floor(Math.random() * windowWidth / s.gridSize) * s.gridSize,
+			Math.floor(Math.random() * windowHeight / s.gridSize) * s.gridSize]);
 	}
 	return locations;
 }

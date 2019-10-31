@@ -17,8 +17,8 @@ function Snake(){
 
         // not allow passing the canvas size
         // parameters : number to constrain, min, max
-        this.x = constrain(this.x, 0-this.gridSize, 600);
-        this.y = constrain(this.y, 0-this.gridSize, 600);
+        this.x = constrain(this.x, 0-this.gridSize, windowWidth);
+        this.y = constrain(this.y, 0-this.gridSize, windowHeight);
 	};
 
 	this.show = function(){
@@ -34,7 +34,7 @@ function Snake(){
     };
 
     this.death = function(){
-        if (this.x >= 600 || this.y >= 600 ||
+        if (this.x >= windowWidth || this.y >= windowHeight ||
             this.x < 0 || this.y < 0 || this.hitOwnBody()){
             this.x = 0;
             this.y = 0;
