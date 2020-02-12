@@ -6,4 +6,4 @@ This project is for testing the p5.js library
 
 
 ### snape shot of the game
-![][snake.png]
+![](snake.png)
